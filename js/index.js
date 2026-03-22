@@ -7,6 +7,36 @@ const loadLeassons = () =>{
     .then((json) => displayLeasson(json.data))
 }
 
+const loadLevelWord = (id) => {
+
+    const url = `https://openapi.programming-hero.com/api/level/${id}`;
+    
+    fetch(url)
+    .then(rse => rse.json())
+    .then((data) => displayLevelWords(data.data))
+
+}
+
+const displayLevelWords = (words) => {
+    // console.log(words)
+    // 1.get the container and empty contaner 
+    const wordContainer = document.getElementById('word-container');
+    wordContainer.innerHTML = '';
+
+    
+    // 2.get into every leassons
+    words.forEach((word) => {
+        console.log(word);
+        const card = document.createElement('div');
+        card.innerHTML = `
+        <p>hardworking</p>
+        `;
+        wordContainer.append(card)
+    })
+
+
+}
+
 // loadLeassons()
 
 const displayLeasson = (leassons) => {
@@ -21,7 +51,7 @@ const displayLeasson = (leassons) => {
         console.log(leasson)
         const  btnDiv = document.createElement('div');
         btnDiv.innerHTML = `
-         <button class="btn btn-outline btn-primary">
+         <button onclick="loadLevelWord(${leasson.level_no})" class="btn btn-outline btn-primary">
          <i class="fa-solid fa-book"></i>
          Leasson-${leasson.level_no}
          </button>
