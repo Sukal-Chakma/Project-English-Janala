@@ -24,12 +24,28 @@ const displayLevelWords = (words) => {
     wordContainer.innerHTML = '';
 
     
+    /*
+ {id: 80, 
+ level: 1,
+ word: 'Run', 
+ meaning: 'দৌড়ানো', 
+ pronunciation: 'রান'
+    */
     // 2.get into every leassons
     words.forEach((word) => {
         console.log(word);
         const card = document.createElement('div');
         card.innerHTML = `
-        <p>hardworking</p>
+           <div class="bg-white rounded-xl shadow-sm text-center py-10 px-5">
+        <h2 class="font-bold text-2xl">${word.word}</h2>
+        <p class="font-semibold">${word.meaning}</p>
+        <div class="font-medium text-2xl font-Bangla">${word.pronunciation}</div>
+        <div class="flex justify-between items-center">
+            <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF90] "><i class="fa-solid fa-circle-info"></i></button>
+            <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF90]  "><i class="fa-solid fa-volume-high"></i></button>
+            
+        </div>
+    </div>
         `;
         wordContainer.append(card)
     })
